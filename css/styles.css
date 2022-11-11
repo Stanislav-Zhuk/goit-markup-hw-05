@@ -63,8 +63,6 @@ img {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
-
-	/* outline: 1px solid rebeccapurple; */
 }
 
 .section {
@@ -670,6 +668,43 @@ footer {
 		1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.team-thumb {
+	position: relative;
+	overflow: hidden;
+}
+
+.project-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+	padding-right: 24px;
+	padding-left: 24px;
+	display: flex;
+	align-items: center;
+
+	background-color: rgba(33, 150, 243, 0.9);
+
+	transform: translateY(100%);
+
+	transition: transform var(--anim-fast);
+}
+
+.project-overlay-text {
+	font-size: 18px;
+	line-height: calc(28 / 18);
+	letter-spacing: 0.03em;
+
+	color: var(--primari-white-color);
+}
+
+.card-link:hover .project-overlay,
+.card-link:focus .project-overlay {
+	transform: translateY(0);
+}
+
 /* Modal window */
 
 .backdrop {
@@ -692,11 +727,14 @@ footer {
 	pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+	transform: translate(-50%, -50%) scale(0.8);
+}
+
 .modal {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
 
 	width: 528px;
 	height: 581px;
@@ -706,6 +744,10 @@ footer {
 		0px 2px 1px rgba(0, 0, 0, 0.2);
 
 	border-radius: 4px;
+
+	transform: translate(-50%, -50%) scale(1);
+
+	transition: translate var(--anim-fast), scale var(--anim-fast);
 }
 
 .modal-btn {
